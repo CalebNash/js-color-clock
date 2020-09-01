@@ -22,5 +22,9 @@ if(seconds.length < 2)
 
   const clockDisplay = document.querySelector('.clock-display').textContent = `${hours}:${minutes}:${seconds}`;
   console.log(clockDisplay);
+
+var numSeconds = parseInt(seconds);
+ var percent = 100/60*numSeconds;
+ console.log(Math.ceil(percent))
 }
 const currentClock = setInterval(displayTime, 1000);
