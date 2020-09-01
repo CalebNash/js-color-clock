@@ -20,11 +20,21 @@ if(seconds.length < 2)
   seconds = '0' + seconds;
 }
 
+var numSeconds = parseInt(seconds);
+ var percent = 1/60*numSeconds;
+ console.log(percent.toFixed(2));
+
   const clockDisplay = document.querySelector('.clock-display').textContent = `${hours}:${minutes}:${seconds}`;
   console.log(clockDisplay);
-
-var numSeconds = parseInt(seconds);
- var percent = 100/60*numSeconds;
- console.log(Math.ceil(percent))
 }
+
+// function progressBar()
+// {
+//   var numSeconds = parseInt(seconds);
+//    var percent = 1000/60*numSeconds;
+//    console.log(percent);
+//
+//    const barDisplay = document.querySelector('.clock-progress-bar').textContent = `${percent}`;
+// }
+
 const currentClock = setInterval(displayTime, 1000);
