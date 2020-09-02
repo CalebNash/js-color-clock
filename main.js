@@ -33,5 +33,6 @@ var numSeconds = parseInt(seconds);
 
 var hexColor = Math.random().toString(16).substring(2,8);
 console.log(hexColor);
+document.querySelector(".clock").style.background = `#${hexColor}`;
 }
 const currentClock = setInterval(displayTime, 1000);
