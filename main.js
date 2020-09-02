@@ -1,38 +1,55 @@
-function displayTime()
-{
-  var time = new Date();
-  var hours = time.getHours().toString();
-  var minutes = time.getMinutes().toString();
-  var seconds = time.getSeconds().toString();
 
-if(hours.length < 2)
-{
-  hours = '0' + hours;
-}
+  const $clock = document.querySelector(".clock");
+  const $display = document.querySelector('.clock-display');
+  const $progressBar = document.querySelector('.clock-progress-bar');
 
-if(minutes.length < 2)
-{
-  minutes = '0' + minutes;
-}
+  let isHovering = false;
+  $clock.addEventListener('mouseover', function()
+  {
+    console.log(event.bubbles);
+    isHovering = true;
+  });
+  $clock.addEventListener('mouseout', function()
+  {
+    console.log(event.bubbles);
+    isHovering = false;
+  });
 
-if(seconds.length < 2)
-{
-  seconds = '0' + seconds;
-}
+  function setTime()
+  {
+    const now = new Date();
+    console.log(now);
+    let hours, minutes, seconds;
 
-var numSeconds = parseInt(seconds);
- var percent = 1/60*numSeconds;
- percent = percent.toFixed(2);
- console.log(percent);
 
-  const clockDisplay = document.querySelector('.clock-display').textContent = `${hours}:${minutes}:${seconds}`;
-  console.log(clockDisplay);
+      hexHours = ('0' + now.getHours().toString(16)).slice(-2)
+      hexMinutes = ('0' + now.getMinutes().toString(16)).slice(-2)
+      hexSeconds = ('0' + now.getSeconds().toString(16)).slice(-2)
 
-  var barLength = 224*percent;
-  document.querySelector(".clock-progress-bar").style.width = `${barLength}px`;
+      hours = ('0' + now.getHours()).slice(-2)
+      minutes = ('0' + now.getMinutes()).slice(-2)
+      seconds = ('0' + now.getSeconds()).slice(-2)
 
-var hexColor = Math.random().toString(16).substring(2,8);
-console.log(hexColor);
-document.querySelector(".clock").style.background = `#${hexColor}`;
-}
-const currentClock = setInterval(displayTime, 1000);
+      if(isHovering)
+      {
+        const currentTime = `${hexHours}:${hexMinutes}:${hexSeconds}`;
+        $display.innerHTML = currentTime;
+      }
+      else
+      {
+        const currentTime = `${hours}:${minutes}:${seconds}`;
+        $display.innerHTML = currentTime;
+      }
+      const width = `${seconds / 60 * 14}rem`
+      $progressBar.style.width = width;
+
+      currentWidth = seconds / 60;
+      console.log(currentWidth.toFixed(2));
+
+       console.log(`${hexHours}${hexMinutes}${hexSeconds}`);
+
+      document.querySelector(".clock").style.background = `#${hexHours}${hexMinutes}${hexSeconds}`;
+
+  }
+
+var currentClock = setInterval(setTime, 1000);
