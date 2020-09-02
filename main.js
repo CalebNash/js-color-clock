@@ -29,6 +29,9 @@ var numSeconds = parseInt(seconds);
   console.log(clockDisplay);
 
   var barLength = 224*percent;
-  var displayBar = document.querySelector(".clock-progress-bar").style.width = `${barLength}px`;
+  document.querySelector(".clock-progress-bar").style.width = `${barLength}px`;
+
+var hexColor = Math.random().toString(16).substring(2,8);
+console.log(hexColor);
 }
 const currentClock = setInterval(displayTime, 1000);
