@@ -22,19 +22,13 @@ if(seconds.length < 2)
 
 var numSeconds = parseInt(seconds);
  var percent = 1/60*numSeconds;
- console.log(percent.toFixed(2));
+ percent = percent.toFixed(2);
+ console.log(percent);
 
   const clockDisplay = document.querySelector('.clock-display').textContent = `${hours}:${minutes}:${seconds}`;
   console.log(clockDisplay);
+
+  var barLength = 224*percent;
+  var displayBar = document.querySelector(".clock-progress-bar").style.width = `${barLength}px`;
 }
-
-// function progressBar()
-// {
-//   var numSeconds = parseInt(seconds);
-//    var percent = 1000/60*numSeconds;
-//    console.log(percent);
-//
-//    const barDisplay = document.querySelector('.clock-progress-bar').textContent = `${percent}`;
-// }
-
 const currentClock = setInterval(displayTime, 1000);
